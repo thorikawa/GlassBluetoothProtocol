@@ -1,0 +1,40 @@
+package com.google.glass.companion;
+
+option java_package = "com.google.glass.companion";
+option java_outer_classname = "Proto";
+
+message Envelope {
+  required uint32 version = 1;
+  optional uint32 serialNumber = 2;
+  optional uint64 timeMillis = 3;
+  optional uint64 uptimeMillis = 4;
+  optional string timezoneC2G = 9;
+  optional string urlG2C = 11;
+  optional Error error = 14;
+  optional ScreenShot screenshot = 15;
+  optional Command command = 16;
+}
+
+message ScreenShot {
+  optional bool startScreenshotRequestC2G = 1;
+  optional bool stopScreenshotRequestC2G = 2;
+  optional bytes screenshotBytesG2C = 3;
+}
+
+message Error {
+  required ErrorType type = 1;
+  enum ErrorType {
+    TETHERING_ERROR_ON_GLASS = 0;
+    SMS_GOOGLE_VOICE_NOT_INSTALLED = 1;
+    SMS_GOOGLE_VOICE_NEEDS_UPDATE = 2;
+  }
+}
+
+message Command {
+  required CommandType command = 1;
+  enum CommandType {
+    UNPAIR = 0;
+    START_DEBUG = 1;
+    STOP_DEBUG = 2;
+  }
+}
