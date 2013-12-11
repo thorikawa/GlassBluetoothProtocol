@@ -1,8 +1,6 @@
-package com.google.glass.companion.android;
+package com.google.glass.companion;
 
 import java.lang.reflect.Method;
-
-import com.google.glass.companion.Proto;
 
 public class CompanionMessagingUtil {
 
