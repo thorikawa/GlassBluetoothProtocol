@@ -1,4 +1,6 @@
-package com.google.glass.companion;
+package Proto;
+
+import "timeline.proto";
 
 option java_package = "com.google.glass.companion";
 option java_outer_classname = "Proto";
@@ -8,11 +10,13 @@ message Envelope {
   optional uint32 serialNumber = 2;
   optional uint64 timeMillis = 3;
   optional uint64 uptimeMillis = 4;
+  repeated TimelineNano.TimelineItem timelineItem = 5;
   optional string timezoneC2G = 9;
   optional string urlG2C = 11;
   optional Error error = 14;
   optional ScreenShot screenshot = 15;
   optional Command command = 16;
+  repeated TimelineItemResponse timelineItemResponseC2G = 17;
 }
 
 message ScreenShot {
@@ -37,4 +41,9 @@ message Command {
     START_DEBUG = 1;
     STOP_DEBUG = 2;
   }
+}
+
+message TimelineItemResponse {
+  optional string id = 1;
+  optional int32 syncStatus = 2;
 }

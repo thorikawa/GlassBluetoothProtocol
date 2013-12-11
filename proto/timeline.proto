@@ -1,0 +1,25 @@
+package TimelineNano;
+
+option java_package = "com.google.googlex.glass.common.proto";
+option java_outer_classname = "TimelineNano";
+
+message TimelineItem {
+  optional string id = 1;
+  optional uint64 creationTime = 2;
+  optional uint64 modifiedTime = 3;
+  optional string source = 4;
+  optional Entity creator = 5;
+  repeated Entity arrayOfEntity = 6;
+  optional string inReplyTo = 7;
+  optional string text = 8;
+}
+
+message Entity {
+  optional string source = 1;
+  optional string id = 2;
+  optional string displayName = 3;
+  optional bool shouldSync = 5;
+  optional int32 type = 6;
+  optional string phoneNumber = 7;
+  optional string email = 8;
+}

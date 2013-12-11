@@ -26,31 +26,39 @@ public interface Proto {
     // optional uint64 uptimeMillis = 4;
     public java.lang.Long uptimeMillis;
     
+    // repeated .TimelineNano.TimelineItem timelineItem = 5;
+    public com.google.googlex.glass.common.proto.TimelineNano.TimelineItem[] timelineItem;
+    
     // optional string timezoneC2G = 9;
     public java.lang.String timezoneC2G;
     
     // optional string urlG2C = 11;
     public java.lang.String urlG2C;
     
-    // optional .com.google.glass.companion.Error error = 14;
+    // optional .Proto.Error error = 14;
     public com.google.glass.companion.Proto.Error error;
     
-    // optional .com.google.glass.companion.ScreenShot screenshot = 15;
+    // optional .Proto.ScreenShot screenshot = 15;
     public com.google.glass.companion.Proto.ScreenShot screenshot;
     
-    // optional .com.google.glass.companion.Command command = 16;
+    // optional .Proto.Command command = 16;
     public com.google.glass.companion.Proto.Command command;
+    
+    // repeated .Proto.TimelineItemResponse timelineItemResponseC2G = 17;
+    public com.google.glass.companion.Proto.TimelineItemResponse[] timelineItemResponseC2G;
     
     public Envelope clear() {
       version = null;
       serialNumber = null;
       timeMillis = null;
       uptimeMillis = null;
+      timelineItem = com.google.googlex.glass.common.proto.TimelineNano.TimelineItem.EMPTY_ARRAY;
       timezoneC2G = null;
       urlG2C = null;
       error = null;
       screenshot = null;
       command = null;
+      timelineItemResponseC2G = com.google.glass.companion.Proto.TimelineItemResponse.EMPTY_ARRAY;
       cachedSize = -1;
       return this;
     }
@@ -90,6 +98,10 @@ public interface Proto {
           return false;
         }
       } else if (!this.uptimeMillis.equals(other.uptimeMillis)) {
+        return false;
+      }
+      if (!com.google.protobuf.nano.InternalNano.equals(
+          this.timelineItem, other.timelineItem)) {
         return false;
       }
       if (this.timezoneC2G == null) {
@@ -133,6 +145,10 @@ public interface Proto {
           return false;
         }
       }
+      if (!com.google.protobuf.nano.InternalNano.equals(
+          this.timelineItemResponseC2G, other.timelineItemResponseC2G)) {
+        return false;
+      }
       return true;
     }
     
@@ -148,6 +164,8 @@ public interface Proto {
       result = 31 * result
           + (this.uptimeMillis == null ? 0 : this.uptimeMillis.hashCode());
       result = 31 * result
+          + com.google.protobuf.nano.InternalNano.hashCode(this.timelineItem);
+      result = 31 * result
           + (this.timezoneC2G == null ? 0 : this.timezoneC2G.hashCode());
       result = 31 * result
           + (this.urlG2C == null ? 0 : this.urlG2C.hashCode());
@@ -157,6 +175,8 @@ public interface Proto {
           (this.screenshot == null ? 0 : this.screenshot.hashCode());
       result = 31 * result +
           (this.command == null ? 0 : this.command.hashCode());
+      result = 31 * result
+          + com.google.protobuf.nano.InternalNano.hashCode(this.timelineItemResponseC2G);
       return result;
     }
     
@@ -173,6 +193,14 @@ public interface Proto {
       if (this.uptimeMillis != null) {
         output.writeUInt64(4, this.uptimeMillis);
       }
+      if (this.timelineItem != null && this.timelineItem.length > 0) {
+        for (int i = 0; i < this.timelineItem.length; i++) {
+          com.google.googlex.glass.common.proto.TimelineNano.TimelineItem element = this.timelineItem[i];
+          if (element != null) {
+            output.writeMessage(5, element);
+          }
+        }
+      }
       if (this.timezoneC2G != null) {
         output.writeString(9, this.timezoneC2G);
       }
@@ -187,6 +215,14 @@ public interface Proto {
       }
       if (this.command != null) {
         output.writeMessage(16, this.command);
+      }
+      if (this.timelineItemResponseC2G != null && this.timelineItemResponseC2G.length > 0) {
+        for (int i = 0; i < this.timelineItemResponseC2G.length; i++) {
+          com.google.glass.companion.Proto.TimelineItemResponse element = this.timelineItemResponseC2G[i];
+          if (element != null) {
+            output.writeMessage(17, element);
+          }
+        }
       }
     }
     
@@ -207,6 +243,15 @@ public interface Proto {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
             .computeUInt64Size(4, this.uptimeMillis);
       }
+      if (this.timelineItem != null && this.timelineItem.length > 0) {
+        for (int i = 0; i < this.timelineItem.length; i++) {
+          com.google.googlex.glass.common.proto.TimelineNano.TimelineItem element = this.timelineItem[i];
+          if (element != null) {
+            size += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeMessageSize(5, element);
+          }
+        }
+      }
       if (this.timezoneC2G != null) {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
             .computeStringSize(9, this.timezoneC2G);
@@ -226,6 +271,15 @@ public interface Proto {
       if (this.command != null) {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
           .computeMessageSize(16, this.command);
+      }
+      if (this.timelineItemResponseC2G != null && this.timelineItemResponseC2G.length > 0) {
+        for (int i = 0; i < this.timelineItemResponseC2G.length; i++) {
+          com.google.glass.companion.Proto.TimelineItemResponse element = this.timelineItemResponseC2G[i];
+          if (element != null) {
+            size += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeMessageSize(17, element);
+          }
+        }
       }
       cachedSize = size;
       return size;
@@ -262,6 +316,26 @@ public interface Proto {
             this.uptimeMillis = input.readUInt64();
             break;
           }
+          case 42: {
+            int arrayLength = com.google.protobuf.nano.WireFormatNano
+                .getRepeatedFieldArrayLength(input, 42);
+            int i = this.timelineItem == null ? 0 : this.timelineItem.length;
+            com.google.googlex.glass.common.proto.TimelineNano.TimelineItem[] newArray =
+                new com.google.googlex.glass.common.proto.TimelineNano.TimelineItem[i + arrayLength];
+            if (i != 0) {
+              java.lang.System.arraycopy(this.timelineItem, 0, newArray, 0, i);
+            }
+            for (; i < newArray.length - 1; i++) {
+              newArray[i] = new com.google.googlex.glass.common.proto.TimelineNano.TimelineItem();
+              input.readMessage(newArray[i]);
+              input.readTag();
+            }
+            // Last one without readTag.
+            newArray[i] = new com.google.googlex.glass.common.proto.TimelineNano.TimelineItem();
+            input.readMessage(newArray[i]);
+            this.timelineItem = newArray;
+            break;
+          }
           case 74: {
             this.timezoneC2G = input.readString();
             break;
@@ -289,6 +363,26 @@ public interface Proto {
               this.command = new com.google.glass.companion.Proto.Command();
             }
             input.readMessage(this.command);
+            break;
+          }
+          case 138: {
+            int arrayLength = com.google.protobuf.nano.WireFormatNano
+                .getRepeatedFieldArrayLength(input, 138);
+            int i = this.timelineItemResponseC2G == null ? 0 : this.timelineItemResponseC2G.length;
+            com.google.glass.companion.Proto.TimelineItemResponse[] newArray =
+                new com.google.glass.companion.Proto.TimelineItemResponse[i + arrayLength];
+            if (i != 0) {
+              java.lang.System.arraycopy(this.timelineItemResponseC2G, 0, newArray, 0, i);
+            }
+            for (; i < newArray.length - 1; i++) {
+              newArray[i] = new com.google.glass.companion.Proto.TimelineItemResponse();
+              input.readMessage(newArray[i]);
+              input.readTag();
+            }
+            // Last one without readTag.
+            newArray[i] = new com.google.glass.companion.Proto.TimelineItemResponse();
+            input.readMessage(newArray[i]);
+            this.timelineItemResponseC2G = newArray;
             break;
           }
         }
@@ -465,7 +559,7 @@ public interface Proto {
       public static final int SMS_GOOGLE_VOICE_NEEDS_UPDATE = 2;
     }
     
-    // required .com.google.glass.companion.Error.ErrorType type = 1;
+    // required .Proto.Error.ErrorType type = 1;
     public java.lang.Integer type;
     
     public Error clear() {
@@ -565,7 +659,7 @@ public interface Proto {
       public static final int STOP_DEBUG = 2;
     }
     
-    // required .com.google.glass.companion.Command.CommandType command = 1;
+    // required .Proto.Command.CommandType command = 1;
     public java.lang.Integer command;
     
     public Command clear() {
@@ -646,6 +740,129 @@ public interface Proto {
             com.google.protobuf.nano.CodedInputByteBufferNano input)
         throws java.io.IOException {
       return new Command().mergeFrom(input);
+    }
+  }
+  
+  public static final class TimelineItemResponse extends
+      com.google.protobuf.nano.MessageNano {
+    
+    public static final TimelineItemResponse[] EMPTY_ARRAY = {};
+    
+    public TimelineItemResponse() {
+      clear();
+    }
+    
+    // optional string id = 1;
+    public java.lang.String id;
+    
+    // optional int32 syncStatus = 2;
+    public java.lang.Integer syncStatus;
+    
+    public TimelineItemResponse clear() {
+      id = null;
+      syncStatus = null;
+      cachedSize = -1;
+      return this;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+      if (o == this) {
+        return true;
+      }
+      if (!(o instanceof TimelineItemResponse)) {
+        return false;
+      }
+      TimelineItemResponse other = (TimelineItemResponse) o;
+      if (this.id == null) {
+        if (other.id != null) {
+          return false;
+        }
+      } else if (!this.id.equals(other.id)) {
+        return false;
+      }
+      if (this.syncStatus == null) {
+        if (other.syncStatus != null) {
+          return false;
+        }
+      } else if (!this.syncStatus.equals(other.syncStatus)) {
+        return false;
+      }
+      return true;
+    }
+    
+    @Override
+    public int hashCode() {
+      int result = 17;
+      result = 31 * result
+          + (this.id == null ? 0 : this.id.hashCode());
+      result = 31 * result
+          + (this.syncStatus == null ? 0 : this.syncStatus.hashCode());
+      return result;
+    }
+    
+    @Override
+    public void writeTo(com.google.protobuf.nano.CodedOutputByteBufferNano output)
+        throws java.io.IOException {
+      if (this.id != null) {
+        output.writeString(1, this.id);
+      }
+      if (this.syncStatus != null) {
+        output.writeInt32(2, this.syncStatus);
+      }
+    }
+    
+    @Override
+    public int getSerializedSize() {
+      int size = super.getSerializedSize();
+      if (this.id != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(1, this.id);
+      }
+      if (this.syncStatus != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt32Size(2, this.syncStatus);
+      }
+      cachedSize = size;
+      return size;
+    }
+    
+    @Override
+    public TimelineItemResponse mergeFrom(
+            com.google.protobuf.nano.CodedInputByteBufferNano input)
+        throws java.io.IOException {
+      while (true) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            return this;
+          default: {
+            if (!com.google.protobuf.nano.WireFormatNano.parseUnknownField(input, tag)) {
+              return this;
+            }
+            break;
+          }
+          case 10: {
+            this.id = input.readString();
+            break;
+          }
+          case 16: {
+            this.syncStatus = input.readInt32();
+            break;
+          }
+        }
+      }
+    }
+    
+    public static TimelineItemResponse parseFrom(byte[] data)
+        throws com.google.protobuf.nano.InvalidProtocolBufferNanoException {
+      return com.google.protobuf.nano.MessageNano.mergeFrom(new TimelineItemResponse(), data);
+    }
+    
+    public static TimelineItemResponse parseFrom(
+            com.google.protobuf.nano.CodedInputByteBufferNano input)
+        throws java.io.IOException {
+      return new TimelineItemResponse().mergeFrom(input);
     }
   }
 }
