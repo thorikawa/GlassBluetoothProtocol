@@ -53,23 +53,17 @@
 
 	<dependencies>
 		<dependency>
-		    <groupId>com.google.protobuf</groupId>
-		    <artifactId>protobuf-java</artifactId>
-		    <version>2.3.0</version>
-		    <scope>system</scope>
-		    <systemPath>${project.basedir}/libs/protobuf-java-2.3.0.jar</systemPath>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>2.3.0</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/libs/protobuf-java-2.3.0.jar</systemPath>
 		</dependency>
 	</dependencies>
 
 	<build>
 		<pluginManagement>
 			<plugins>
-				<plugin>
-					<groupId>org.sonatype.plugins</groupId>
-					<artifactId>jarjar-maven-plugin</artifactId>
-					<version>1.7</version>
-				</plugin>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -83,6 +77,30 @@
 		</pluginManagement>
 
 		<plugins>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>jarjar-maven-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>jarjar</goal>
+						</goals>
+						<configuration>
+							<includes>
+								<include>com.google.protobuf:protobuf-java</include>
+							</includes>
+							<rules>
+								<rule>
+									<pattern>com.google.protobuf.**</pattern>
+									<result>com.polysfactory.lib.glass.bluetooth.internal.protobuf.@1</result>
+								</rule>
+							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
