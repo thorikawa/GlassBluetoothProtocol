@@ -31,7 +31,26 @@ GlassProtocol.writeMessage(envelope, socket.getOutputStream());
 
   ```
 Envelope envelope = (Envelope) GlassProtocol.readMessage(new Envelope(), socket.getInputStream());
+if (envelope.screenshot != null) {
+	// screenshot response includes screenshot field in envelope
+	// …do something…
+}
   ```
+
+## Download
+
+Download [the latest JAR][1] or grab via Maven:
+```xml
+<dependency>
+  <groupId>com.polysfactory.lib.glass.bluetooth</groupId>
+  <artifactId>glass-bluetooth</artifactId>
+  <version>(insert latest version)</version>
+</dependency>
+```
+or Gradle:
+```groovy
+compile 'com.polysfactory.lib.glass.bluetooth:glass-bluetooth:(insert latest version)'
+```
 
 ### License
 ```
@@ -49,3 +68,5 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
+
+[1]: http://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.polysfactory.lib.glass.bluetooth&a=glass-bluetooth&v=LATEST
