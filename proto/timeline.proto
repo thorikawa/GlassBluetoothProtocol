@@ -13,6 +13,8 @@ message TimelineItem {
   optional string inReplyTo = 7;
   optional string text = 8;
   optional SourceType sourceType = 14;
+  optional bool isDeleted = 15;
+  optional uint64 displayTime = 17;
   optional string speakableText = 19;
   optional string title = 23;
   optional string html = 24;

@@ -48,6 +48,12 @@ public interface TimelineNano {
     // optional .TimelineNano.SourceType sourceType = 14;
     public java.lang.Integer sourceType;
     
+    // optional bool isDeleted = 15;
+    public java.lang.Boolean isDeleted;
+    
+    // optional uint64 displayTime = 17;
+    public java.lang.Long displayTime;
+    
     // optional string speakableText = 19;
     public java.lang.String speakableText;
     
@@ -67,6 +73,8 @@ public interface TimelineNano {
       inReplyTo = null;
       text = null;
       sourceType = null;
+      isDeleted = null;
+      displayTime = null;
       speakableText = null;
       title = null;
       html = null;
@@ -144,6 +152,20 @@ public interface TimelineNano {
         }
       } else if (!this.sourceType.equals(other.sourceType)) {
         return false;}
+      if (this.isDeleted == null) {
+        if (other.isDeleted != null) {
+          return false;
+        }
+      } else if (!this.isDeleted.equals(other.isDeleted)) {
+        return false;
+      }
+      if (this.displayTime == null) {
+        if (other.displayTime != null) {
+          return false;
+        }
+      } else if (!this.displayTime.equals(other.displayTime)) {
+        return false;
+      }
       if (this.speakableText == null) {
         if (other.speakableText != null) {
           return false;
@@ -189,6 +211,10 @@ public interface TimelineNano {
           + (this.text == null ? 0 : this.text.hashCode());
       result = 31 * result + (this.sourceType == null ? 0 : this.sourceType);
       result = 31 * result
+          + (this.isDeleted == null ? 0 : this.isDeleted.hashCode());
+      result = 31 * result
+          + (this.displayTime == null ? 0 : this.displayTime.hashCode());
+      result = 31 * result
           + (this.speakableText == null ? 0 : this.speakableText.hashCode());
       result = 31 * result
           + (this.title == null ? 0 : this.title.hashCode());
@@ -231,6 +257,12 @@ public interface TimelineNano {
       }
       if (this.sourceType != null) {
         output.writeInt32(14, this.sourceType);
+      }
+      if (this.isDeleted != null) {
+        output.writeBool(15, this.isDeleted);
+      }
+      if (this.displayTime != null) {
+        output.writeUInt64(17, this.displayTime);
       }
       if (this.speakableText != null) {
         output.writeString(19, this.speakableText);
@@ -286,6 +318,14 @@ public interface TimelineNano {
       if (this.sourceType != null) {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
           .computeInt32Size(14, this.sourceType);
+      }
+      if (this.isDeleted != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeBoolSize(15, this.isDeleted);
+      }
+      if (this.displayTime != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeUInt64Size(17, this.displayTime);
       }
       if (this.speakableText != null) {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
@@ -371,6 +411,14 @@ public interface TimelineNano {
           }
           case 112: {
             this.sourceType = input.readInt32();
+            break;
+          }
+          case 120: {
+            this.isDeleted = input.readBool();
+            break;
+          }
+          case 136: {
+            this.displayTime = input.readUInt64();
             break;
           }
           case 154: {
