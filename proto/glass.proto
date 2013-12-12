@@ -13,16 +13,29 @@ message Envelope {
   repeated TimelineNano.TimelineItem timelineItem = 5;
   optional string timezoneC2G = 9;
   optional string urlG2C = 11;
+  optional CompanionInfo companionInfo = 13;
   optional Error error = 14;
   optional ScreenShot screenshot = 15;
   optional Command command = 16;
   repeated TimelineItemResponse timelineItemResponseC2G = 17;
+  optional MotionEvent motionC2G = 20;
+  optional GlassInfoRequest glassInfoRequestC2G = 21;
+  optional GlassInfoResponse glassInfoResponseG2C = 22;
 }
 
 message ScreenShot {
   optional bool startScreenshotRequestC2G = 1;
   optional bool stopScreenshotRequestC2G = 2;
   optional bytes screenshotBytesG2C = 3;
+}
+
+message CompanionInfo {
+  required int64 id = 1;
+  optional bool requestNetwork  = 2;
+  optional bool responseIsNetworkOk = 3;
+  optional int32 responseAndroidVersion = 4;
+  optional bool requestLog = 5;
+  optional string responseLog = 6;
 }
 
 message Error {
@@ -46,4 +59,51 @@ message Command {
 message TimelineItemResponse {
   optional string id = 1;
   optional int32 syncStatus = 2;
+}
+
+message MotionEvent {
+  optional uint64 downTime = 1;
+  optional uint64 eventTime = 2;
+  optional int32 action = 3;
+  optional int32 pointerCount = 4;
+  repeated PointerProperties pointerProperties = 5;
+  repeated PointerCoords pointerCoords = 6;
+  optional int32 metaState = 7;
+  optional int32 buttonState = 8;
+  optional float xPrecision = 9;
+  optional float yPrecision = 10;
+  optional int32 deviceId = 11;
+  optional int32 edgeFlags = 12;
+  optional int32 source = 13;
+  optional int32 flags = 14;
+
+  message PointerProperties {
+    optional int32 id = 1;
+    optional int32 toolType = 2;
+  }
+
+  message PointerCoords {
+    optional float orientation = 1;
+    optional float pressure = 2;
+    optional float size = 3;
+    optional float toolMajor = 4;
+    optional float toolMinor = 5;
+    optional float touchMajor = 6;
+    optional float touchMinor = 7;
+    optional float x = 8;
+    optional float y = 9;
+  }
+}
+
+message GlassInfoRequest {
+  optional bool requestBatteryLevel = 1;
+  optional bool requestStorageInfo = 2;
+  optional bool requestDeviceName = 3;
+}
+
+message GlassInfoResponse {
+  optional int32 batteryLevel = 1;
+  optional int64 externalStorageTotalBytes = 2;
+  optional int64 externalStorageAvailableBytes = 3;
+  optional string deviceName = 4;
 }

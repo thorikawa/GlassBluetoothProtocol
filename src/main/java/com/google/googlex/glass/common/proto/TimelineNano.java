@@ -5,6 +5,13 @@ package com.google.googlex.glass.common.proto;
 @SuppressWarnings("hiding")
 public interface TimelineNano {
   
+  // enum SourceType
+  public interface SourceType {
+    public static final int GLASSWARE = 0;
+    public static final int GLASS_DEVICE = 1;
+    public static final int COMPANIONWARE = 2;
+  }
+  
   public static final class TimelineItem extends
       com.google.protobuf.nano.MessageNano {
     
@@ -38,6 +45,18 @@ public interface TimelineNano {
     // optional string text = 8;
     public java.lang.String text;
     
+    // optional .TimelineNano.SourceType sourceType = 14;
+    public java.lang.Integer sourceType;
+    
+    // optional string speakableText = 19;
+    public java.lang.String speakableText;
+    
+    // optional string title = 23;
+    public java.lang.String title;
+    
+    // optional string html = 24;
+    public java.lang.String html;
+    
     public TimelineItem clear() {
       id = null;
       creationTime = null;
@@ -47,6 +66,10 @@ public interface TimelineNano {
       arrayOfEntity = com.google.googlex.glass.common.proto.TimelineNano.Entity.EMPTY_ARRAY;
       inReplyTo = null;
       text = null;
+      sourceType = null;
+      speakableText = null;
+      title = null;
+      html = null;
       cachedSize = -1;
       return this;
     }
@@ -115,6 +138,33 @@ public interface TimelineNano {
       } else if (!this.text.equals(other.text)) {
         return false;
       }
+      if (this.sourceType == null) {
+        if (other.sourceType != null) {
+          return false;
+        }
+      } else if (!this.sourceType.equals(other.sourceType)) {
+        return false;}
+      if (this.speakableText == null) {
+        if (other.speakableText != null) {
+          return false;
+        }
+      } else if (!this.speakableText.equals(other.speakableText)) {
+        return false;
+      }
+      if (this.title == null) {
+        if (other.title != null) {
+          return false;
+        }
+      } else if (!this.title.equals(other.title)) {
+        return false;
+      }
+      if (this.html == null) {
+        if (other.html != null) {
+          return false;
+        }
+      } else if (!this.html.equals(other.html)) {
+        return false;
+      }
       return true;
     }
     
@@ -137,6 +187,13 @@ public interface TimelineNano {
           + (this.inReplyTo == null ? 0 : this.inReplyTo.hashCode());
       result = 31 * result
           + (this.text == null ? 0 : this.text.hashCode());
+      result = 31 * result + (this.sourceType == null ? 0 : this.sourceType);
+      result = 31 * result
+          + (this.speakableText == null ? 0 : this.speakableText.hashCode());
+      result = 31 * result
+          + (this.title == null ? 0 : this.title.hashCode());
+      result = 31 * result
+          + (this.html == null ? 0 : this.html.hashCode());
       return result;
     }
     
@@ -171,6 +228,18 @@ public interface TimelineNano {
       }
       if (this.text != null) {
         output.writeString(8, this.text);
+      }
+      if (this.sourceType != null) {
+        output.writeInt32(14, this.sourceType);
+      }
+      if (this.speakableText != null) {
+        output.writeString(19, this.speakableText);
+      }
+      if (this.title != null) {
+        output.writeString(23, this.title);
+      }
+      if (this.html != null) {
+        output.writeString(24, this.html);
       }
     }
     
@@ -213,6 +282,22 @@ public interface TimelineNano {
       if (this.text != null) {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
             .computeStringSize(8, this.text);
+      }
+      if (this.sourceType != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+          .computeInt32Size(14, this.sourceType);
+      }
+      if (this.speakableText != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(19, this.speakableText);
+      }
+      if (this.title != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(23, this.title);
+      }
+      if (this.html != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(24, this.html);
       }
       cachedSize = size;
       return size;
@@ -284,6 +369,22 @@ public interface TimelineNano {
             this.text = input.readString();
             break;
           }
+          case 112: {
+            this.sourceType = input.readInt32();
+            break;
+          }
+          case 154: {
+            this.speakableText = input.readString();
+            break;
+          }
+          case 186: {
+            this.title = input.readString();
+            break;
+          }
+          case 194: {
+            this.html = input.readString();
+            break;
+          }
         }
       }
     }
@@ -330,6 +431,36 @@ public interface TimelineNano {
     // optional string email = 8;
     public java.lang.String email;
     
+    // repeated string acceptType = 9;
+    public java.lang.String[] acceptType;
+    
+    // optional bool isCommunicationTarget = 10;
+    public java.lang.Boolean isCommunicationTarget;
+    
+    // repeated string imageUrl = 12;
+    public java.lang.String[] imageUrl;
+    
+    // repeated string secondaryPhoneNumber = 13;
+    public java.lang.String[] secondaryPhoneNumber;
+    
+    // repeated string secondaryEmail = 15;
+    public java.lang.String[] secondaryEmail;
+    
+    // repeated string acceptCommand = 16;
+    public java.lang.String[] acceptCommand;
+    
+    // optional string speakableName = 17;
+    public java.lang.String speakableName;
+    
+    // optional uint64 creationTime = 21;
+    public java.lang.Long creationTime;
+    
+    // optional string nickname = 23;
+    public java.lang.String nickname;
+    
+    // optional string fullname = 26;
+    public java.lang.String fullname;
+    
     public Entity clear() {
       source = null;
       id = null;
@@ -338,6 +469,16 @@ public interface TimelineNano {
       type = null;
       phoneNumber = null;
       email = null;
+      acceptType = com.google.protobuf.nano.WireFormatNano.EMPTY_STRING_ARRAY;
+      isCommunicationTarget = null;
+      imageUrl = com.google.protobuf.nano.WireFormatNano.EMPTY_STRING_ARRAY;
+      secondaryPhoneNumber = com.google.protobuf.nano.WireFormatNano.EMPTY_STRING_ARRAY;
+      secondaryEmail = com.google.protobuf.nano.WireFormatNano.EMPTY_STRING_ARRAY;
+      acceptCommand = com.google.protobuf.nano.WireFormatNano.EMPTY_STRING_ARRAY;
+      speakableName = null;
+      creationTime = null;
+      nickname = null;
+      fullname = null;
       cachedSize = -1;
       return this;
     }
@@ -400,6 +541,61 @@ public interface TimelineNano {
       } else if (!this.email.equals(other.email)) {
         return false;
       }
+      if (!com.google.protobuf.nano.InternalNano.equals(
+          this.acceptType, other.acceptType)) {
+        return false;
+      }
+      if (this.isCommunicationTarget == null) {
+        if (other.isCommunicationTarget != null) {
+          return false;
+        }
+      } else if (!this.isCommunicationTarget.equals(other.isCommunicationTarget)) {
+        return false;
+      }
+      if (!com.google.protobuf.nano.InternalNano.equals(
+          this.imageUrl, other.imageUrl)) {
+        return false;
+      }
+      if (!com.google.protobuf.nano.InternalNano.equals(
+          this.secondaryPhoneNumber, other.secondaryPhoneNumber)) {
+        return false;
+      }
+      if (!com.google.protobuf.nano.InternalNano.equals(
+          this.secondaryEmail, other.secondaryEmail)) {
+        return false;
+      }
+      if (!com.google.protobuf.nano.InternalNano.equals(
+          this.acceptCommand, other.acceptCommand)) {
+        return false;
+      }
+      if (this.speakableName == null) {
+        if (other.speakableName != null) {
+          return false;
+        }
+      } else if (!this.speakableName.equals(other.speakableName)) {
+        return false;
+      }
+      if (this.creationTime == null) {
+        if (other.creationTime != null) {
+          return false;
+        }
+      } else if (!this.creationTime.equals(other.creationTime)) {
+        return false;
+      }
+      if (this.nickname == null) {
+        if (other.nickname != null) {
+          return false;
+        }
+      } else if (!this.nickname.equals(other.nickname)) {
+        return false;
+      }
+      if (this.fullname == null) {
+        if (other.fullname != null) {
+          return false;
+        }
+      } else if (!this.fullname.equals(other.fullname)) {
+        return false;
+      }
       return true;
     }
     
@@ -420,6 +616,26 @@ public interface TimelineNano {
           + (this.phoneNumber == null ? 0 : this.phoneNumber.hashCode());
       result = 31 * result
           + (this.email == null ? 0 : this.email.hashCode());
+      result = 31 * result
+          + com.google.protobuf.nano.InternalNano.hashCode(this.acceptType);
+      result = 31 * result
+          + (this.isCommunicationTarget == null ? 0 : this.isCommunicationTarget.hashCode());
+      result = 31 * result
+          + com.google.protobuf.nano.InternalNano.hashCode(this.imageUrl);
+      result = 31 * result
+          + com.google.protobuf.nano.InternalNano.hashCode(this.secondaryPhoneNumber);
+      result = 31 * result
+          + com.google.protobuf.nano.InternalNano.hashCode(this.secondaryEmail);
+      result = 31 * result
+          + com.google.protobuf.nano.InternalNano.hashCode(this.acceptCommand);
+      result = 31 * result
+          + (this.speakableName == null ? 0 : this.speakableName.hashCode());
+      result = 31 * result
+          + (this.creationTime == null ? 0 : this.creationTime.hashCode());
+      result = 31 * result
+          + (this.nickname == null ? 0 : this.nickname.hashCode());
+      result = 31 * result
+          + (this.fullname == null ? 0 : this.fullname.hashCode());
       return result;
     }
     
@@ -446,6 +662,61 @@ public interface TimelineNano {
       }
       if (this.email != null) {
         output.writeString(8, this.email);
+      }
+      if (this.acceptType != null && this.acceptType.length > 0) {
+        for (int i = 0; i < this.acceptType.length; i++) {
+          java.lang.String element = this.acceptType[i];
+          if (element != null) {
+            output.writeString(9, element);
+          }
+        }
+      }
+      if (this.isCommunicationTarget != null) {
+        output.writeBool(10, this.isCommunicationTarget);
+      }
+      if (this.imageUrl != null && this.imageUrl.length > 0) {
+        for (int i = 0; i < this.imageUrl.length; i++) {
+          java.lang.String element = this.imageUrl[i];
+          if (element != null) {
+            output.writeString(12, element);
+          }
+        }
+      }
+      if (this.secondaryPhoneNumber != null && this.secondaryPhoneNumber.length > 0) {
+        for (int i = 0; i < this.secondaryPhoneNumber.length; i++) {
+          java.lang.String element = this.secondaryPhoneNumber[i];
+          if (element != null) {
+            output.writeString(13, element);
+          }
+        }
+      }
+      if (this.secondaryEmail != null && this.secondaryEmail.length > 0) {
+        for (int i = 0; i < this.secondaryEmail.length; i++) {
+          java.lang.String element = this.secondaryEmail[i];
+          if (element != null) {
+            output.writeString(15, element);
+          }
+        }
+      }
+      if (this.acceptCommand != null && this.acceptCommand.length > 0) {
+        for (int i = 0; i < this.acceptCommand.length; i++) {
+          java.lang.String element = this.acceptCommand[i];
+          if (element != null) {
+            output.writeString(16, element);
+          }
+        }
+      }
+      if (this.speakableName != null) {
+        output.writeString(17, this.speakableName);
+      }
+      if (this.creationTime != null) {
+        output.writeUInt64(21, this.creationTime);
+      }
+      if (this.nickname != null) {
+        output.writeString(23, this.nickname);
+      }
+      if (this.fullname != null) {
+        output.writeString(26, this.fullname);
       }
     }
     
@@ -479,6 +750,96 @@ public interface TimelineNano {
       if (this.email != null) {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
             .computeStringSize(8, this.email);
+      }
+      if (this.acceptType != null && this.acceptType.length > 0) {
+        int dataCount = 0;
+        int dataSize = 0;
+        for (int i = 0; i < this.acceptType.length; i++) {
+          java.lang.String element = this.acceptType[i];
+          if (element != null) {
+            dataCount++;
+            dataSize += com.google.protobuf.nano.CodedOutputByteBufferNano
+                .computeStringSizeNoTag(element);
+          }
+        }
+        size += dataSize;
+        size += 1 * dataCount;
+      }
+      if (this.isCommunicationTarget != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeBoolSize(10, this.isCommunicationTarget);
+      }
+      if (this.imageUrl != null && this.imageUrl.length > 0) {
+        int dataCount = 0;
+        int dataSize = 0;
+        for (int i = 0; i < this.imageUrl.length; i++) {
+          java.lang.String element = this.imageUrl[i];
+          if (element != null) {
+            dataCount++;
+            dataSize += com.google.protobuf.nano.CodedOutputByteBufferNano
+                .computeStringSizeNoTag(element);
+          }
+        }
+        size += dataSize;
+        size += 1 * dataCount;
+      }
+      if (this.secondaryPhoneNumber != null && this.secondaryPhoneNumber.length > 0) {
+        int dataCount = 0;
+        int dataSize = 0;
+        for (int i = 0; i < this.secondaryPhoneNumber.length; i++) {
+          java.lang.String element = this.secondaryPhoneNumber[i];
+          if (element != null) {
+            dataCount++;
+            dataSize += com.google.protobuf.nano.CodedOutputByteBufferNano
+                .computeStringSizeNoTag(element);
+          }
+        }
+        size += dataSize;
+        size += 1 * dataCount;
+      }
+      if (this.secondaryEmail != null && this.secondaryEmail.length > 0) {
+        int dataCount = 0;
+        int dataSize = 0;
+        for (int i = 0; i < this.secondaryEmail.length; i++) {
+          java.lang.String element = this.secondaryEmail[i];
+          if (element != null) {
+            dataCount++;
+            dataSize += com.google.protobuf.nano.CodedOutputByteBufferNano
+                .computeStringSizeNoTag(element);
+          }
+        }
+        size += dataSize;
+        size += 1 * dataCount;
+      }
+      if (this.acceptCommand != null && this.acceptCommand.length > 0) {
+        int dataCount = 0;
+        int dataSize = 0;
+        for (int i = 0; i < this.acceptCommand.length; i++) {
+          java.lang.String element = this.acceptCommand[i];
+          if (element != null) {
+            dataCount++;
+            dataSize += com.google.protobuf.nano.CodedOutputByteBufferNano
+                .computeStringSizeNoTag(element);
+          }
+        }
+        size += dataSize;
+        size += 2 * dataCount;
+      }
+      if (this.speakableName != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(17, this.speakableName);
+      }
+      if (this.creationTime != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeUInt64Size(21, this.creationTime);
+      }
+      if (this.nickname != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(23, this.nickname);
+      }
+      if (this.fullname != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(26, this.fullname);
       }
       cachedSize = size;
       return size;
@@ -525,6 +886,111 @@ public interface TimelineNano {
           }
           case 66: {
             this.email = input.readString();
+            break;
+          }
+          case 74: {
+            int arrayLength = com.google.protobuf.nano.WireFormatNano
+                .getRepeatedFieldArrayLength(input, 74);
+            int i = this.acceptType == null ? 0 : this.acceptType.length;
+            java.lang.String[] newArray = new java.lang.String[i + arrayLength];
+            if (i != 0) {
+              java.lang.System.arraycopy(this.acceptType, 0, newArray, 0, i);
+            }
+            for (; i < newArray.length - 1; i++) {
+              newArray[i] = input.readString();
+              input.readTag();
+            }
+            // Last one without readTag.
+            newArray[i] = input.readString();
+            this.acceptType = newArray;
+            break;
+          }
+          case 80: {
+            this.isCommunicationTarget = input.readBool();
+            break;
+          }
+          case 98: {
+            int arrayLength = com.google.protobuf.nano.WireFormatNano
+                .getRepeatedFieldArrayLength(input, 98);
+            int i = this.imageUrl == null ? 0 : this.imageUrl.length;
+            java.lang.String[] newArray = new java.lang.String[i + arrayLength];
+            if (i != 0) {
+              java.lang.System.arraycopy(this.imageUrl, 0, newArray, 0, i);
+            }
+            for (; i < newArray.length - 1; i++) {
+              newArray[i] = input.readString();
+              input.readTag();
+            }
+            // Last one without readTag.
+            newArray[i] = input.readString();
+            this.imageUrl = newArray;
+            break;
+          }
+          case 106: {
+            int arrayLength = com.google.protobuf.nano.WireFormatNano
+                .getRepeatedFieldArrayLength(input, 106);
+            int i = this.secondaryPhoneNumber == null ? 0 : this.secondaryPhoneNumber.length;
+            java.lang.String[] newArray = new java.lang.String[i + arrayLength];
+            if (i != 0) {
+              java.lang.System.arraycopy(this.secondaryPhoneNumber, 0, newArray, 0, i);
+            }
+            for (; i < newArray.length - 1; i++) {
+              newArray[i] = input.readString();
+              input.readTag();
+            }
+            // Last one without readTag.
+            newArray[i] = input.readString();
+            this.secondaryPhoneNumber = newArray;
+            break;
+          }
+          case 122: {
+            int arrayLength = com.google.protobuf.nano.WireFormatNano
+                .getRepeatedFieldArrayLength(input, 122);
+            int i = this.secondaryEmail == null ? 0 : this.secondaryEmail.length;
+            java.lang.String[] newArray = new java.lang.String[i + arrayLength];
+            if (i != 0) {
+              java.lang.System.arraycopy(this.secondaryEmail, 0, newArray, 0, i);
+            }
+            for (; i < newArray.length - 1; i++) {
+              newArray[i] = input.readString();
+              input.readTag();
+            }
+            // Last one without readTag.
+            newArray[i] = input.readString();
+            this.secondaryEmail = newArray;
+            break;
+          }
+          case 130: {
+            int arrayLength = com.google.protobuf.nano.WireFormatNano
+                .getRepeatedFieldArrayLength(input, 130);
+            int i = this.acceptCommand == null ? 0 : this.acceptCommand.length;
+            java.lang.String[] newArray = new java.lang.String[i + arrayLength];
+            if (i != 0) {
+              java.lang.System.arraycopy(this.acceptCommand, 0, newArray, 0, i);
+            }
+            for (; i < newArray.length - 1; i++) {
+              newArray[i] = input.readString();
+              input.readTag();
+            }
+            // Last one without readTag.
+            newArray[i] = input.readString();
+            this.acceptCommand = newArray;
+            break;
+          }
+          case 138: {
+            this.speakableName = input.readString();
+            break;
+          }
+          case 168: {
+            this.creationTime = input.readUInt64();
+            break;
+          }
+          case 186: {
+            this.nickname = input.readString();
+            break;
+          }
+          case 210: {
+            this.fullname = input.readString();
             break;
           }
         }

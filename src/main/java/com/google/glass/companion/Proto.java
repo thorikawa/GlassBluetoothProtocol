@@ -35,6 +35,9 @@ public interface Proto {
     // optional string urlG2C = 11;
     public java.lang.String urlG2C;
     
+    // optional .Proto.CompanionInfo companionInfo = 13;
+    public com.google.glass.companion.Proto.CompanionInfo companionInfo;
+    
     // optional .Proto.Error error = 14;
     public com.google.glass.companion.Proto.Error error;
     
@@ -47,6 +50,15 @@ public interface Proto {
     // repeated .Proto.TimelineItemResponse timelineItemResponseC2G = 17;
     public com.google.glass.companion.Proto.TimelineItemResponse[] timelineItemResponseC2G;
     
+    // optional .Proto.MotionEvent motionC2G = 20;
+    public com.google.glass.companion.Proto.MotionEvent motionC2G;
+    
+    // optional .Proto.GlassInfoRequest glassInfoRequestC2G = 21;
+    public com.google.glass.companion.Proto.GlassInfoRequest glassInfoRequestC2G;
+    
+    // optional .Proto.GlassInfoResponse glassInfoResponseG2C = 22;
+    public com.google.glass.companion.Proto.GlassInfoResponse glassInfoResponseG2C;
+    
     public Envelope clear() {
       version = null;
       serialNumber = null;
@@ -55,10 +67,14 @@ public interface Proto {
       timelineItem = com.google.googlex.glass.common.proto.TimelineNano.TimelineItem.EMPTY_ARRAY;
       timezoneC2G = null;
       urlG2C = null;
+      companionInfo = null;
       error = null;
       screenshot = null;
       command = null;
       timelineItemResponseC2G = com.google.glass.companion.Proto.TimelineItemResponse.EMPTY_ARRAY;
+      motionC2G = null;
+      glassInfoRequestC2G = null;
+      glassInfoResponseG2C = null;
       cachedSize = -1;
       return this;
     }
@@ -118,6 +134,15 @@ public interface Proto {
       } else if (!this.urlG2C.equals(other.urlG2C)) {
         return false;
       }
+      if (this.companionInfo == null) { 
+        if (other.companionInfo != null) {
+          return false;
+        }
+      } else {
+        if (!this.companionInfo.equals(other.companionInfo)) {
+          return false;
+        }
+      }
       if (this.error == null) { 
         if (other.error != null) {
           return false;
@@ -149,6 +174,33 @@ public interface Proto {
           this.timelineItemResponseC2G, other.timelineItemResponseC2G)) {
         return false;
       }
+      if (this.motionC2G == null) { 
+        if (other.motionC2G != null) {
+          return false;
+        }
+      } else {
+        if (!this.motionC2G.equals(other.motionC2G)) {
+          return false;
+        }
+      }
+      if (this.glassInfoRequestC2G == null) { 
+        if (other.glassInfoRequestC2G != null) {
+          return false;
+        }
+      } else {
+        if (!this.glassInfoRequestC2G.equals(other.glassInfoRequestC2G)) {
+          return false;
+        }
+      }
+      if (this.glassInfoResponseG2C == null) { 
+        if (other.glassInfoResponseG2C != null) {
+          return false;
+        }
+      } else {
+        if (!this.glassInfoResponseG2C.equals(other.glassInfoResponseG2C)) {
+          return false;
+        }
+      }
       return true;
     }
     
@@ -170,6 +222,8 @@ public interface Proto {
       result = 31 * result
           + (this.urlG2C == null ? 0 : this.urlG2C.hashCode());
       result = 31 * result +
+          (this.companionInfo == null ? 0 : this.companionInfo.hashCode());
+      result = 31 * result +
           (this.error == null ? 0 : this.error.hashCode());
       result = 31 * result +
           (this.screenshot == null ? 0 : this.screenshot.hashCode());
@@ -177,6 +231,12 @@ public interface Proto {
           (this.command == null ? 0 : this.command.hashCode());
       result = 31 * result
           + com.google.protobuf.nano.InternalNano.hashCode(this.timelineItemResponseC2G);
+      result = 31 * result +
+          (this.motionC2G == null ? 0 : this.motionC2G.hashCode());
+      result = 31 * result +
+          (this.glassInfoRequestC2G == null ? 0 : this.glassInfoRequestC2G.hashCode());
+      result = 31 * result +
+          (this.glassInfoResponseG2C == null ? 0 : this.glassInfoResponseG2C.hashCode());
       return result;
     }
     
@@ -207,6 +267,9 @@ public interface Proto {
       if (this.urlG2C != null) {
         output.writeString(11, this.urlG2C);
       }
+      if (this.companionInfo != null) {
+        output.writeMessage(13, this.companionInfo);
+      }
       if (this.error != null) {
         output.writeMessage(14, this.error);
       }
@@ -223,6 +286,15 @@ public interface Proto {
             output.writeMessage(17, element);
           }
         }
+      }
+      if (this.motionC2G != null) {
+        output.writeMessage(20, this.motionC2G);
+      }
+      if (this.glassInfoRequestC2G != null) {
+        output.writeMessage(21, this.glassInfoRequestC2G);
+      }
+      if (this.glassInfoResponseG2C != null) {
+        output.writeMessage(22, this.glassInfoResponseG2C);
       }
     }
     
@@ -260,6 +332,10 @@ public interface Proto {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
             .computeStringSize(11, this.urlG2C);
       }
+      if (this.companionInfo != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+          .computeMessageSize(13, this.companionInfo);
+      }
       if (this.error != null) {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
           .computeMessageSize(14, this.error);
@@ -280,6 +356,18 @@ public interface Proto {
               .computeMessageSize(17, element);
           }
         }
+      }
+      if (this.motionC2G != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+          .computeMessageSize(20, this.motionC2G);
+      }
+      if (this.glassInfoRequestC2G != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+          .computeMessageSize(21, this.glassInfoRequestC2G);
+      }
+      if (this.glassInfoResponseG2C != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+          .computeMessageSize(22, this.glassInfoResponseG2C);
       }
       cachedSize = size;
       return size;
@@ -344,6 +432,13 @@ public interface Proto {
             this.urlG2C = input.readString();
             break;
           }
+          case 106: {
+            if (this.companionInfo == null) {
+              this.companionInfo = new com.google.glass.companion.Proto.CompanionInfo();
+            }
+            input.readMessage(this.companionInfo);
+            break;
+          }
           case 114: {
             if (this.error == null) {
               this.error = new com.google.glass.companion.Proto.Error();
@@ -383,6 +478,27 @@ public interface Proto {
             newArray[i] = new com.google.glass.companion.Proto.TimelineItemResponse();
             input.readMessage(newArray[i]);
             this.timelineItemResponseC2G = newArray;
+            break;
+          }
+          case 162: {
+            if (this.motionC2G == null) {
+              this.motionC2G = new com.google.glass.companion.Proto.MotionEvent();
+            }
+            input.readMessage(this.motionC2G);
+            break;
+          }
+          case 170: {
+            if (this.glassInfoRequestC2G == null) {
+              this.glassInfoRequestC2G = new com.google.glass.companion.Proto.GlassInfoRequest();
+            }
+            input.readMessage(this.glassInfoRequestC2G);
+            break;
+          }
+          case 178: {
+            if (this.glassInfoResponseG2C == null) {
+              this.glassInfoResponseG2C = new com.google.glass.companion.Proto.GlassInfoResponse();
+            }
+            input.readMessage(this.glassInfoResponseG2C);
             break;
           }
         }
@@ -540,6 +656,221 @@ public interface Proto {
             com.google.protobuf.nano.CodedInputByteBufferNano input)
         throws java.io.IOException {
       return new ScreenShot().mergeFrom(input);
+    }
+  }
+  
+  public static final class CompanionInfo extends
+      com.google.protobuf.nano.MessageNano {
+    
+    public static final CompanionInfo[] EMPTY_ARRAY = {};
+    
+    public CompanionInfo() {
+      clear();
+    }
+    
+    // required int64 id = 1;
+    public java.lang.Long id;
+    
+    // optional bool requestNetwork = 2;
+    public java.lang.Boolean requestNetwork;
+    
+    // optional bool responseIsNetworkOk = 3;
+    public java.lang.Boolean responseIsNetworkOk;
+    
+    // optional int32 responseAndroidVersion = 4;
+    public java.lang.Integer responseAndroidVersion;
+    
+    // optional bool requestLog = 5;
+    public java.lang.Boolean requestLog;
+    
+    // optional string responseLog = 6;
+    public java.lang.String responseLog;
+    
+    public CompanionInfo clear() {
+      id = null;
+      requestNetwork = null;
+      responseIsNetworkOk = null;
+      responseAndroidVersion = null;
+      requestLog = null;
+      responseLog = null;
+      cachedSize = -1;
+      return this;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+      if (o == this) {
+        return true;
+      }
+      if (!(o instanceof CompanionInfo)) {
+        return false;
+      }
+      CompanionInfo other = (CompanionInfo) o;
+      if (this.id == null) {
+        if (other.id != null) {
+          return false;
+        }
+      } else if (!this.id.equals(other.id)) {
+        return false;
+      }
+      if (this.requestNetwork == null) {
+        if (other.requestNetwork != null) {
+          return false;
+        }
+      } else if (!this.requestNetwork.equals(other.requestNetwork)) {
+        return false;
+      }
+      if (this.responseIsNetworkOk == null) {
+        if (other.responseIsNetworkOk != null) {
+          return false;
+        }
+      } else if (!this.responseIsNetworkOk.equals(other.responseIsNetworkOk)) {
+        return false;
+      }
+      if (this.responseAndroidVersion == null) {
+        if (other.responseAndroidVersion != null) {
+          return false;
+        }
+      } else if (!this.responseAndroidVersion.equals(other.responseAndroidVersion)) {
+        return false;
+      }
+      if (this.requestLog == null) {
+        if (other.requestLog != null) {
+          return false;
+        }
+      } else if (!this.requestLog.equals(other.requestLog)) {
+        return false;
+      }
+      if (this.responseLog == null) {
+        if (other.responseLog != null) {
+          return false;
+        }
+      } else if (!this.responseLog.equals(other.responseLog)) {
+        return false;
+      }
+      return true;
+    }
+    
+    @Override
+    public int hashCode() {
+      int result = 17;
+      result = 31 * result
+          + (this.id == null ? 0 : this.id.hashCode());
+      result = 31 * result
+          + (this.requestNetwork == null ? 0 : this.requestNetwork.hashCode());
+      result = 31 * result
+          + (this.responseIsNetworkOk == null ? 0 : this.responseIsNetworkOk.hashCode());
+      result = 31 * result
+          + (this.responseAndroidVersion == null ? 0 : this.responseAndroidVersion.hashCode());
+      result = 31 * result
+          + (this.requestLog == null ? 0 : this.requestLog.hashCode());
+      result = 31 * result
+          + (this.responseLog == null ? 0 : this.responseLog.hashCode());
+      return result;
+    }
+    
+    @Override
+    public void writeTo(com.google.protobuf.nano.CodedOutputByteBufferNano output)
+        throws java.io.IOException {
+      output.writeInt64(1, this.id);
+      if (this.requestNetwork != null) {
+        output.writeBool(2, this.requestNetwork);
+      }
+      if (this.responseIsNetworkOk != null) {
+        output.writeBool(3, this.responseIsNetworkOk);
+      }
+      if (this.responseAndroidVersion != null) {
+        output.writeInt32(4, this.responseAndroidVersion);
+      }
+      if (this.requestLog != null) {
+        output.writeBool(5, this.requestLog);
+      }
+      if (this.responseLog != null) {
+        output.writeString(6, this.responseLog);
+      }
+    }
+    
+    @Override
+    public int getSerializedSize() {
+      int size = super.getSerializedSize();
+      size += com.google.protobuf.nano.CodedOutputByteBufferNano
+          .computeInt64Size(1, this.id);
+      if (this.requestNetwork != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeBoolSize(2, this.requestNetwork);
+      }
+      if (this.responseIsNetworkOk != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeBoolSize(3, this.responseIsNetworkOk);
+      }
+      if (this.responseAndroidVersion != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt32Size(4, this.responseAndroidVersion);
+      }
+      if (this.requestLog != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeBoolSize(5, this.requestLog);
+      }
+      if (this.responseLog != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(6, this.responseLog);
+      }
+      cachedSize = size;
+      return size;
+    }
+    
+    @Override
+    public CompanionInfo mergeFrom(
+            com.google.protobuf.nano.CodedInputByteBufferNano input)
+        throws java.io.IOException {
+      while (true) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            return this;
+          default: {
+            if (!com.google.protobuf.nano.WireFormatNano.parseUnknownField(input, tag)) {
+              return this;
+            }
+            break;
+          }
+          case 8: {
+            this.id = input.readInt64();
+            break;
+          }
+          case 16: {
+            this.requestNetwork = input.readBool();
+            break;
+          }
+          case 24: {
+            this.responseIsNetworkOk = input.readBool();
+            break;
+          }
+          case 32: {
+            this.responseAndroidVersion = input.readInt32();
+            break;
+          }
+          case 40: {
+            this.requestLog = input.readBool();
+            break;
+          }
+          case 50: {
+            this.responseLog = input.readString();
+            break;
+          }
+        }
+      }
+    }
+    
+    public static CompanionInfo parseFrom(byte[] data)
+        throws com.google.protobuf.nano.InvalidProtocolBufferNanoException {
+      return com.google.protobuf.nano.MessageNano.mergeFrom(new CompanionInfo(), data);
+    }
+    
+    public static CompanionInfo parseFrom(
+            com.google.protobuf.nano.CodedInputByteBufferNano input)
+        throws java.io.IOException {
+      return new CompanionInfo().mergeFrom(input);
     }
   }
   
@@ -863,6 +1194,1195 @@ public interface Proto {
             com.google.protobuf.nano.CodedInputByteBufferNano input)
         throws java.io.IOException {
       return new TimelineItemResponse().mergeFrom(input);
+    }
+  }
+  
+  public static final class MotionEvent extends
+      com.google.protobuf.nano.MessageNano {
+    
+    public static final MotionEvent[] EMPTY_ARRAY = {};
+    
+    public MotionEvent() {
+      clear();
+    }
+    
+    public static final class PointerProperties extends
+        com.google.protobuf.nano.MessageNano {
+      
+      public static final PointerProperties[] EMPTY_ARRAY = {};
+      
+      public PointerProperties() {
+        clear();
+      }
+      
+      // optional int32 id = 1;
+      public java.lang.Integer id;
+      
+      // optional int32 toolType = 2;
+      public java.lang.Integer toolType;
+      
+      public PointerProperties clear() {
+        id = null;
+        toolType = null;
+        cachedSize = -1;
+        return this;
+      }
+      
+      @Override
+      public boolean equals(Object o) {
+        if (o == this) {
+          return true;
+        }
+        if (!(o instanceof PointerProperties)) {
+          return false;
+        }
+        PointerProperties other = (PointerProperties) o;
+        if (this.id == null) {
+          if (other.id != null) {
+            return false;
+          }
+        } else if (!this.id.equals(other.id)) {
+          return false;
+        }
+        if (this.toolType == null) {
+          if (other.toolType != null) {
+            return false;
+          }
+        } else if (!this.toolType.equals(other.toolType)) {
+          return false;
+        }
+        return true;
+      }
+      
+      @Override
+      public int hashCode() {
+        int result = 17;
+        result = 31 * result
+            + (this.id == null ? 0 : this.id.hashCode());
+        result = 31 * result
+            + (this.toolType == null ? 0 : this.toolType.hashCode());
+        return result;
+      }
+      
+      @Override
+      public void writeTo(com.google.protobuf.nano.CodedOutputByteBufferNano output)
+          throws java.io.IOException {
+        if (this.id != null) {
+          output.writeInt32(1, this.id);
+        }
+        if (this.toolType != null) {
+          output.writeInt32(2, this.toolType);
+        }
+      }
+      
+      @Override
+      public int getSerializedSize() {
+        int size = super.getSerializedSize();
+        if (this.id != null) {
+          size += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeInt32Size(1, this.id);
+        }
+        if (this.toolType != null) {
+          size += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeInt32Size(2, this.toolType);
+        }
+        cachedSize = size;
+        return size;
+      }
+      
+      @Override
+      public PointerProperties mergeFrom(
+              com.google.protobuf.nano.CodedInputByteBufferNano input)
+          throws java.io.IOException {
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              return this;
+            default: {
+              if (!com.google.protobuf.nano.WireFormatNano.parseUnknownField(input, tag)) {
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              this.id = input.readInt32();
+              break;
+            }
+            case 16: {
+              this.toolType = input.readInt32();
+              break;
+            }
+          }
+        }
+      }
+      
+      public static PointerProperties parseFrom(byte[] data)
+          throws com.google.protobuf.nano.InvalidProtocolBufferNanoException {
+        return com.google.protobuf.nano.MessageNano.mergeFrom(new PointerProperties(), data);
+      }
+      
+      public static PointerProperties parseFrom(
+              com.google.protobuf.nano.CodedInputByteBufferNano input)
+          throws java.io.IOException {
+        return new PointerProperties().mergeFrom(input);
+      }
+    }
+    
+    public static final class PointerCoords extends
+        com.google.protobuf.nano.MessageNano {
+      
+      public static final PointerCoords[] EMPTY_ARRAY = {};
+      
+      public PointerCoords() {
+        clear();
+      }
+      
+      // optional float orientation = 1;
+      public java.lang.Float orientation;
+      
+      // optional float pressure = 2;
+      public java.lang.Float pressure;
+      
+      // optional float size = 3;
+      public java.lang.Float size;
+      
+      // optional float toolMajor = 4;
+      public java.lang.Float toolMajor;
+      
+      // optional float toolMinor = 5;
+      public java.lang.Float toolMinor;
+      
+      // optional float touchMajor = 6;
+      public java.lang.Float touchMajor;
+      
+      // optional float touchMinor = 7;
+      public java.lang.Float touchMinor;
+      
+      // optional float x = 8;
+      public java.lang.Float x;
+      
+      // optional float y = 9;
+      public java.lang.Float y;
+      
+      public PointerCoords clear() {
+        orientation = null;
+        pressure = null;
+        size = null;
+        toolMajor = null;
+        toolMinor = null;
+        touchMajor = null;
+        touchMinor = null;
+        x = null;
+        y = null;
+        cachedSize = -1;
+        return this;
+      }
+      
+      @Override
+      public boolean equals(Object o) {
+        if (o == this) {
+          return true;
+        }
+        if (!(o instanceof PointerCoords)) {
+          return false;
+        }
+        PointerCoords other = (PointerCoords) o;
+        if (this.orientation == null) {
+          if (other.orientation != null) {
+            return false;
+          }
+        } else if (!this.orientation.equals(other.orientation)) {
+          return false;
+        }
+        if (this.pressure == null) {
+          if (other.pressure != null) {
+            return false;
+          }
+        } else if (!this.pressure.equals(other.pressure)) {
+          return false;
+        }
+        if (this.size == null) {
+          if (other.size != null) {
+            return false;
+          }
+        } else if (!this.size.equals(other.size)) {
+          return false;
+        }
+        if (this.toolMajor == null) {
+          if (other.toolMajor != null) {
+            return false;
+          }
+        } else if (!this.toolMajor.equals(other.toolMajor)) {
+          return false;
+        }
+        if (this.toolMinor == null) {
+          if (other.toolMinor != null) {
+            return false;
+          }
+        } else if (!this.toolMinor.equals(other.toolMinor)) {
+          return false;
+        }
+        if (this.touchMajor == null) {
+          if (other.touchMajor != null) {
+            return false;
+          }
+        } else if (!this.touchMajor.equals(other.touchMajor)) {
+          return false;
+        }
+        if (this.touchMinor == null) {
+          if (other.touchMinor != null) {
+            return false;
+          }
+        } else if (!this.touchMinor.equals(other.touchMinor)) {
+          return false;
+        }
+        if (this.x == null) {
+          if (other.x != null) {
+            return false;
+          }
+        } else if (!this.x.equals(other.x)) {
+          return false;
+        }
+        if (this.y == null) {
+          if (other.y != null) {
+            return false;
+          }
+        } else if (!this.y.equals(other.y)) {
+          return false;
+        }
+        return true;
+      }
+      
+      @Override
+      public int hashCode() {
+        int result = 17;
+        result = 31 * result
+            + (this.orientation == null ? 0 : this.orientation.hashCode());
+        result = 31 * result
+            + (this.pressure == null ? 0 : this.pressure.hashCode());
+        result = 31 * result
+            + (this.size == null ? 0 : this.size.hashCode());
+        result = 31 * result
+            + (this.toolMajor == null ? 0 : this.toolMajor.hashCode());
+        result = 31 * result
+            + (this.toolMinor == null ? 0 : this.toolMinor.hashCode());
+        result = 31 * result
+            + (this.touchMajor == null ? 0 : this.touchMajor.hashCode());
+        result = 31 * result
+            + (this.touchMinor == null ? 0 : this.touchMinor.hashCode());
+        result = 31 * result
+            + (this.x == null ? 0 : this.x.hashCode());
+        result = 31 * result
+            + (this.y == null ? 0 : this.y.hashCode());
+        return result;
+      }
+      
+      @Override
+      public void writeTo(com.google.protobuf.nano.CodedOutputByteBufferNano output)
+          throws java.io.IOException {
+        if (this.orientation != null) {
+          output.writeFloat(1, this.orientation);
+        }
+        if (this.pressure != null) {
+          output.writeFloat(2, this.pressure);
+        }
+        if (this.size != null) {
+          output.writeFloat(3, this.size);
+        }
+        if (this.toolMajor != null) {
+          output.writeFloat(4, this.toolMajor);
+        }
+        if (this.toolMinor != null) {
+          output.writeFloat(5, this.toolMinor);
+        }
+        if (this.touchMajor != null) {
+          output.writeFloat(6, this.touchMajor);
+        }
+        if (this.touchMinor != null) {
+          output.writeFloat(7, this.touchMinor);
+        }
+        if (this.x != null) {
+          output.writeFloat(8, this.x);
+        }
+        if (this.y != null) {
+          output.writeFloat(9, this.y);
+        }
+      }
+      
+      @Override
+      public int getSerializedSize() {
+        int size = super.getSerializedSize();
+        if (this.orientation != null) {
+          size += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeFloatSize(1, this.orientation);
+        }
+        if (this.pressure != null) {
+          size += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeFloatSize(2, this.pressure);
+        }
+        if (this.size != null) {
+          size += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeFloatSize(3, this.size);
+        }
+        if (this.toolMajor != null) {
+          size += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeFloatSize(4, this.toolMajor);
+        }
+        if (this.toolMinor != null) {
+          size += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeFloatSize(5, this.toolMinor);
+        }
+        if (this.touchMajor != null) {
+          size += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeFloatSize(6, this.touchMajor);
+        }
+        if (this.touchMinor != null) {
+          size += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeFloatSize(7, this.touchMinor);
+        }
+        if (this.x != null) {
+          size += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeFloatSize(8, this.x);
+        }
+        if (this.y != null) {
+          size += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeFloatSize(9, this.y);
+        }
+        cachedSize = size;
+        return size;
+      }
+      
+      @Override
+      public PointerCoords mergeFrom(
+              com.google.protobuf.nano.CodedInputByteBufferNano input)
+          throws java.io.IOException {
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              return this;
+            default: {
+              if (!com.google.protobuf.nano.WireFormatNano.parseUnknownField(input, tag)) {
+                return this;
+              }
+              break;
+            }
+            case 13: {
+              this.orientation = input.readFloat();
+              break;
+            }
+            case 21: {
+              this.pressure = input.readFloat();
+              break;
+            }
+            case 29: {
+              this.size = input.readFloat();
+              break;
+            }
+            case 37: {
+              this.toolMajor = input.readFloat();
+              break;
+            }
+            case 45: {
+              this.toolMinor = input.readFloat();
+              break;
+            }
+            case 53: {
+              this.touchMajor = input.readFloat();
+              break;
+            }
+            case 61: {
+              this.touchMinor = input.readFloat();
+              break;
+            }
+            case 69: {
+              this.x = input.readFloat();
+              break;
+            }
+            case 77: {
+              this.y = input.readFloat();
+              break;
+            }
+          }
+        }
+      }
+      
+      public static PointerCoords parseFrom(byte[] data)
+          throws com.google.protobuf.nano.InvalidProtocolBufferNanoException {
+        return com.google.protobuf.nano.MessageNano.mergeFrom(new PointerCoords(), data);
+      }
+      
+      public static PointerCoords parseFrom(
+              com.google.protobuf.nano.CodedInputByteBufferNano input)
+          throws java.io.IOException {
+        return new PointerCoords().mergeFrom(input);
+      }
+    }
+    
+    // optional uint64 downTime = 1;
+    public java.lang.Long downTime;
+    
+    // optional uint64 eventTime = 2;
+    public java.lang.Long eventTime;
+    
+    // optional int32 action = 3;
+    public java.lang.Integer action;
+    
+    // optional int32 pointerCount = 4;
+    public java.lang.Integer pointerCount;
+    
+    // repeated .Proto.MotionEvent.PointerProperties pointerProperties = 5;
+    public com.google.glass.companion.Proto.MotionEvent.PointerProperties[] pointerProperties;
+    
+    // repeated .Proto.MotionEvent.PointerCoords pointerCoords = 6;
+    public com.google.glass.companion.Proto.MotionEvent.PointerCoords[] pointerCoords;
+    
+    // optional int32 metaState = 7;
+    public java.lang.Integer metaState;
+    
+    // optional int32 buttonState = 8;
+    public java.lang.Integer buttonState;
+    
+    // optional float xPrecision = 9;
+    public java.lang.Float xPrecision;
+    
+    // optional float yPrecision = 10;
+    public java.lang.Float yPrecision;
+    
+    // optional int32 deviceId = 11;
+    public java.lang.Integer deviceId;
+    
+    // optional int32 edgeFlags = 12;
+    public java.lang.Integer edgeFlags;
+    
+    // optional int32 source = 13;
+    public java.lang.Integer source;
+    
+    // optional int32 flags = 14;
+    public java.lang.Integer flags;
+    
+    public MotionEvent clear() {
+      downTime = null;
+      eventTime = null;
+      action = null;
+      pointerCount = null;
+      pointerProperties = com.google.glass.companion.Proto.MotionEvent.PointerProperties.EMPTY_ARRAY;
+      pointerCoords = com.google.glass.companion.Proto.MotionEvent.PointerCoords.EMPTY_ARRAY;
+      metaState = null;
+      buttonState = null;
+      xPrecision = null;
+      yPrecision = null;
+      deviceId = null;
+      edgeFlags = null;
+      source = null;
+      flags = null;
+      cachedSize = -1;
+      return this;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+      if (o == this) {
+        return true;
+      }
+      if (!(o instanceof MotionEvent)) {
+        return false;
+      }
+      MotionEvent other = (MotionEvent) o;
+      if (this.downTime == null) {
+        if (other.downTime != null) {
+          return false;
+        }
+      } else if (!this.downTime.equals(other.downTime)) {
+        return false;
+      }
+      if (this.eventTime == null) {
+        if (other.eventTime != null) {
+          return false;
+        }
+      } else if (!this.eventTime.equals(other.eventTime)) {
+        return false;
+      }
+      if (this.action == null) {
+        if (other.action != null) {
+          return false;
+        }
+      } else if (!this.action.equals(other.action)) {
+        return false;
+      }
+      if (this.pointerCount == null) {
+        if (other.pointerCount != null) {
+          return false;
+        }
+      } else if (!this.pointerCount.equals(other.pointerCount)) {
+        return false;
+      }
+      if (!com.google.protobuf.nano.InternalNano.equals(
+          this.pointerProperties, other.pointerProperties)) {
+        return false;
+      }
+      if (!com.google.protobuf.nano.InternalNano.equals(
+          this.pointerCoords, other.pointerCoords)) {
+        return false;
+      }
+      if (this.metaState == null) {
+        if (other.metaState != null) {
+          return false;
+        }
+      } else if (!this.metaState.equals(other.metaState)) {
+        return false;
+      }
+      if (this.buttonState == null) {
+        if (other.buttonState != null) {
+          return false;
+        }
+      } else if (!this.buttonState.equals(other.buttonState)) {
+        return false;
+      }
+      if (this.xPrecision == null) {
+        if (other.xPrecision != null) {
+          return false;
+        }
+      } else if (!this.xPrecision.equals(other.xPrecision)) {
+        return false;
+      }
+      if (this.yPrecision == null) {
+        if (other.yPrecision != null) {
+          return false;
+        }
+      } else if (!this.yPrecision.equals(other.yPrecision)) {
+        return false;
+      }
+      if (this.deviceId == null) {
+        if (other.deviceId != null) {
+          return false;
+        }
+      } else if (!this.deviceId.equals(other.deviceId)) {
+        return false;
+      }
+      if (this.edgeFlags == null) {
+        if (other.edgeFlags != null) {
+          return false;
+        }
+      } else if (!this.edgeFlags.equals(other.edgeFlags)) {
+        return false;
+      }
+      if (this.source == null) {
+        if (other.source != null) {
+          return false;
+        }
+      } else if (!this.source.equals(other.source)) {
+        return false;
+      }
+      if (this.flags == null) {
+        if (other.flags != null) {
+          return false;
+        }
+      } else if (!this.flags.equals(other.flags)) {
+        return false;
+      }
+      return true;
+    }
+    
+    @Override
+    public int hashCode() {
+      int result = 17;
+      result = 31 * result
+          + (this.downTime == null ? 0 : this.downTime.hashCode());
+      result = 31 * result
+          + (this.eventTime == null ? 0 : this.eventTime.hashCode());
+      result = 31 * result
+          + (this.action == null ? 0 : this.action.hashCode());
+      result = 31 * result
+          + (this.pointerCount == null ? 0 : this.pointerCount.hashCode());
+      result = 31 * result
+          + com.google.protobuf.nano.InternalNano.hashCode(this.pointerProperties);
+      result = 31 * result
+          + com.google.protobuf.nano.InternalNano.hashCode(this.pointerCoords);
+      result = 31 * result
+          + (this.metaState == null ? 0 : this.metaState.hashCode());
+      result = 31 * result
+          + (this.buttonState == null ? 0 : this.buttonState.hashCode());
+      result = 31 * result
+          + (this.xPrecision == null ? 0 : this.xPrecision.hashCode());
+      result = 31 * result
+          + (this.yPrecision == null ? 0 : this.yPrecision.hashCode());
+      result = 31 * result
+          + (this.deviceId == null ? 0 : this.deviceId.hashCode());
+      result = 31 * result
+          + (this.edgeFlags == null ? 0 : this.edgeFlags.hashCode());
+      result = 31 * result
+          + (this.source == null ? 0 : this.source.hashCode());
+      result = 31 * result
+          + (this.flags == null ? 0 : this.flags.hashCode());
+      return result;
+    }
+    
+    @Override
+    public void writeTo(com.google.protobuf.nano.CodedOutputByteBufferNano output)
+        throws java.io.IOException {
+      if (this.downTime != null) {
+        output.writeUInt64(1, this.downTime);
+      }
+      if (this.eventTime != null) {
+        output.writeUInt64(2, this.eventTime);
+      }
+      if (this.action != null) {
+        output.writeInt32(3, this.action);
+      }
+      if (this.pointerCount != null) {
+        output.writeInt32(4, this.pointerCount);
+      }
+      if (this.pointerProperties != null && this.pointerProperties.length > 0) {
+        for (int i = 0; i < this.pointerProperties.length; i++) {
+          com.google.glass.companion.Proto.MotionEvent.PointerProperties element = this.pointerProperties[i];
+          if (element != null) {
+            output.writeMessage(5, element);
+          }
+        }
+      }
+      if (this.pointerCoords != null && this.pointerCoords.length > 0) {
+        for (int i = 0; i < this.pointerCoords.length; i++) {
+          com.google.glass.companion.Proto.MotionEvent.PointerCoords element = this.pointerCoords[i];
+          if (element != null) {
+            output.writeMessage(6, element);
+          }
+        }
+      }
+      if (this.metaState != null) {
+        output.writeInt32(7, this.metaState);
+      }
+      if (this.buttonState != null) {
+        output.writeInt32(8, this.buttonState);
+      }
+      if (this.xPrecision != null) {
+        output.writeFloat(9, this.xPrecision);
+      }
+      if (this.yPrecision != null) {
+        output.writeFloat(10, this.yPrecision);
+      }
+      if (this.deviceId != null) {
+        output.writeInt32(11, this.deviceId);
+      }
+      if (this.edgeFlags != null) {
+        output.writeInt32(12, this.edgeFlags);
+      }
+      if (this.source != null) {
+        output.writeInt32(13, this.source);
+      }
+      if (this.flags != null) {
+        output.writeInt32(14, this.flags);
+      }
+    }
+    
+    @Override
+    public int getSerializedSize() {
+      int size = super.getSerializedSize();
+      if (this.downTime != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeUInt64Size(1, this.downTime);
+      }
+      if (this.eventTime != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeUInt64Size(2, this.eventTime);
+      }
+      if (this.action != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt32Size(3, this.action);
+      }
+      if (this.pointerCount != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt32Size(4, this.pointerCount);
+      }
+      if (this.pointerProperties != null && this.pointerProperties.length > 0) {
+        for (int i = 0; i < this.pointerProperties.length; i++) {
+          com.google.glass.companion.Proto.MotionEvent.PointerProperties element = this.pointerProperties[i];
+          if (element != null) {
+            size += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeMessageSize(5, element);
+          }
+        }
+      }
+      if (this.pointerCoords != null && this.pointerCoords.length > 0) {
+        for (int i = 0; i < this.pointerCoords.length; i++) {
+          com.google.glass.companion.Proto.MotionEvent.PointerCoords element = this.pointerCoords[i];
+          if (element != null) {
+            size += com.google.protobuf.nano.CodedOutputByteBufferNano
+              .computeMessageSize(6, element);
+          }
+        }
+      }
+      if (this.metaState != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt32Size(7, this.metaState);
+      }
+      if (this.buttonState != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt32Size(8, this.buttonState);
+      }
+      if (this.xPrecision != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeFloatSize(9, this.xPrecision);
+      }
+      if (this.yPrecision != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeFloatSize(10, this.yPrecision);
+      }
+      if (this.deviceId != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt32Size(11, this.deviceId);
+      }
+      if (this.edgeFlags != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt32Size(12, this.edgeFlags);
+      }
+      if (this.source != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt32Size(13, this.source);
+      }
+      if (this.flags != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt32Size(14, this.flags);
+      }
+      cachedSize = size;
+      return size;
+    }
+    
+    @Override
+    public MotionEvent mergeFrom(
+            com.google.protobuf.nano.CodedInputByteBufferNano input)
+        throws java.io.IOException {
+      while (true) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            return this;
+          default: {
+            if (!com.google.protobuf.nano.WireFormatNano.parseUnknownField(input, tag)) {
+              return this;
+            }
+            break;
+          }
+          case 8: {
+            this.downTime = input.readUInt64();
+            break;
+          }
+          case 16: {
+            this.eventTime = input.readUInt64();
+            break;
+          }
+          case 24: {
+            this.action = input.readInt32();
+            break;
+          }
+          case 32: {
+            this.pointerCount = input.readInt32();
+            break;
+          }
+          case 42: {
+            int arrayLength = com.google.protobuf.nano.WireFormatNano
+                .getRepeatedFieldArrayLength(input, 42);
+            int i = this.pointerProperties == null ? 0 : this.pointerProperties.length;
+            com.google.glass.companion.Proto.MotionEvent.PointerProperties[] newArray =
+                new com.google.glass.companion.Proto.MotionEvent.PointerProperties[i + arrayLength];
+            if (i != 0) {
+              java.lang.System.arraycopy(this.pointerProperties, 0, newArray, 0, i);
+            }
+            for (; i < newArray.length - 1; i++) {
+              newArray[i] = new com.google.glass.companion.Proto.MotionEvent.PointerProperties();
+              input.readMessage(newArray[i]);
+              input.readTag();
+            }
+            // Last one without readTag.
+            newArray[i] = new com.google.glass.companion.Proto.MotionEvent.PointerProperties();
+            input.readMessage(newArray[i]);
+            this.pointerProperties = newArray;
+            break;
+          }
+          case 50: {
+            int arrayLength = com.google.protobuf.nano.WireFormatNano
+                .getRepeatedFieldArrayLength(input, 50);
+            int i = this.pointerCoords == null ? 0 : this.pointerCoords.length;
+            com.google.glass.companion.Proto.MotionEvent.PointerCoords[] newArray =
+                new com.google.glass.companion.Proto.MotionEvent.PointerCoords[i + arrayLength];
+            if (i != 0) {
+              java.lang.System.arraycopy(this.pointerCoords, 0, newArray, 0, i);
+            }
+            for (; i < newArray.length - 1; i++) {
+              newArray[i] = new com.google.glass.companion.Proto.MotionEvent.PointerCoords();
+              input.readMessage(newArray[i]);
+              input.readTag();
+            }
+            // Last one without readTag.
+            newArray[i] = new com.google.glass.companion.Proto.MotionEvent.PointerCoords();
+            input.readMessage(newArray[i]);
+            this.pointerCoords = newArray;
+            break;
+          }
+          case 56: {
+            this.metaState = input.readInt32();
+            break;
+          }
+          case 64: {
+            this.buttonState = input.readInt32();
+            break;
+          }
+          case 77: {
+            this.xPrecision = input.readFloat();
+            break;
+          }
+          case 85: {
+            this.yPrecision = input.readFloat();
+            break;
+          }
+          case 88: {
+            this.deviceId = input.readInt32();
+            break;
+          }
+          case 96: {
+            this.edgeFlags = input.readInt32();
+            break;
+          }
+          case 104: {
+            this.source = input.readInt32();
+            break;
+          }
+          case 112: {
+            this.flags = input.readInt32();
+            break;
+          }
+        }
+      }
+    }
+    
+    public static MotionEvent parseFrom(byte[] data)
+        throws com.google.protobuf.nano.InvalidProtocolBufferNanoException {
+      return com.google.protobuf.nano.MessageNano.mergeFrom(new MotionEvent(), data);
+    }
+    
+    public static MotionEvent parseFrom(
+            com.google.protobuf.nano.CodedInputByteBufferNano input)
+        throws java.io.IOException {
+      return new MotionEvent().mergeFrom(input);
+    }
+  }
+  
+  public static final class GlassInfoRequest extends
+      com.google.protobuf.nano.MessageNano {
+    
+    public static final GlassInfoRequest[] EMPTY_ARRAY = {};
+    
+    public GlassInfoRequest() {
+      clear();
+    }
+    
+    // optional bool requestBatteryLevel = 1;
+    public java.lang.Boolean requestBatteryLevel;
+    
+    // optional bool requestStorageInfo = 2;
+    public java.lang.Boolean requestStorageInfo;
+    
+    // optional bool requestDeviceName = 3;
+    public java.lang.Boolean requestDeviceName;
+    
+    public GlassInfoRequest clear() {
+      requestBatteryLevel = null;
+      requestStorageInfo = null;
+      requestDeviceName = null;
+      cachedSize = -1;
+      return this;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+      if (o == this) {
+        return true;
+      }
+      if (!(o instanceof GlassInfoRequest)) {
+        return false;
+      }
+      GlassInfoRequest other = (GlassInfoRequest) o;
+      if (this.requestBatteryLevel == null) {
+        if (other.requestBatteryLevel != null) {
+          return false;
+        }
+      } else if (!this.requestBatteryLevel.equals(other.requestBatteryLevel)) {
+        return false;
+      }
+      if (this.requestStorageInfo == null) {
+        if (other.requestStorageInfo != null) {
+          return false;
+        }
+      } else if (!this.requestStorageInfo.equals(other.requestStorageInfo)) {
+        return false;
+      }
+      if (this.requestDeviceName == null) {
+        if (other.requestDeviceName != null) {
+          return false;
+        }
+      } else if (!this.requestDeviceName.equals(other.requestDeviceName)) {
+        return false;
+      }
+      return true;
+    }
+    
+    @Override
+    public int hashCode() {
+      int result = 17;
+      result = 31 * result
+          + (this.requestBatteryLevel == null ? 0 : this.requestBatteryLevel.hashCode());
+      result = 31 * result
+          + (this.requestStorageInfo == null ? 0 : this.requestStorageInfo.hashCode());
+      result = 31 * result
+          + (this.requestDeviceName == null ? 0 : this.requestDeviceName.hashCode());
+      return result;
+    }
+    
+    @Override
+    public void writeTo(com.google.protobuf.nano.CodedOutputByteBufferNano output)
+        throws java.io.IOException {
+      if (this.requestBatteryLevel != null) {
+        output.writeBool(1, this.requestBatteryLevel);
+      }
+      if (this.requestStorageInfo != null) {
+        output.writeBool(2, this.requestStorageInfo);
+      }
+      if (this.requestDeviceName != null) {
+        output.writeBool(3, this.requestDeviceName);
+      }
+    }
+    
+    @Override
+    public int getSerializedSize() {
+      int size = super.getSerializedSize();
+      if (this.requestBatteryLevel != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeBoolSize(1, this.requestBatteryLevel);
+      }
+      if (this.requestStorageInfo != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeBoolSize(2, this.requestStorageInfo);
+      }
+      if (this.requestDeviceName != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeBoolSize(3, this.requestDeviceName);
+      }
+      cachedSize = size;
+      return size;
+    }
+    
+    @Override
+    public GlassInfoRequest mergeFrom(
+            com.google.protobuf.nano.CodedInputByteBufferNano input)
+        throws java.io.IOException {
+      while (true) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            return this;
+          default: {
+            if (!com.google.protobuf.nano.WireFormatNano.parseUnknownField(input, tag)) {
+              return this;
+            }
+            break;
+          }
+          case 8: {
+            this.requestBatteryLevel = input.readBool();
+            break;
+          }
+          case 16: {
+            this.requestStorageInfo = input.readBool();
+            break;
+          }
+          case 24: {
+            this.requestDeviceName = input.readBool();
+            break;
+          }
+        }
+      }
+    }
+    
+    public static GlassInfoRequest parseFrom(byte[] data)
+        throws com.google.protobuf.nano.InvalidProtocolBufferNanoException {
+      return com.google.protobuf.nano.MessageNano.mergeFrom(new GlassInfoRequest(), data);
+    }
+    
+    public static GlassInfoRequest parseFrom(
+            com.google.protobuf.nano.CodedInputByteBufferNano input)
+        throws java.io.IOException {
+      return new GlassInfoRequest().mergeFrom(input);
+    }
+  }
+  
+  public static final class GlassInfoResponse extends
+      com.google.protobuf.nano.MessageNano {
+    
+    public static final GlassInfoResponse[] EMPTY_ARRAY = {};
+    
+    public GlassInfoResponse() {
+      clear();
+    }
+    
+    // optional int32 batteryLevel = 1;
+    public java.lang.Integer batteryLevel;
+    
+    // optional int64 externalStorageTotalBytes = 2;
+    public java.lang.Long externalStorageTotalBytes;
+    
+    // optional int64 externalStorageAvailableBytes = 3;
+    public java.lang.Long externalStorageAvailableBytes;
+    
+    // optional string deviceName = 4;
+    public java.lang.String deviceName;
+    
+    public GlassInfoResponse clear() {
+      batteryLevel = null;
+      externalStorageTotalBytes = null;
+      externalStorageAvailableBytes = null;
+      deviceName = null;
+      cachedSize = -1;
+      return this;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+      if (o == this) {
+        return true;
+      }
+      if (!(o instanceof GlassInfoResponse)) {
+        return false;
+      }
+      GlassInfoResponse other = (GlassInfoResponse) o;
+      if (this.batteryLevel == null) {
+        if (other.batteryLevel != null) {
+          return false;
+        }
+      } else if (!this.batteryLevel.equals(other.batteryLevel)) {
+        return false;
+      }
+      if (this.externalStorageTotalBytes == null) {
+        if (other.externalStorageTotalBytes != null) {
+          return false;
+        }
+      } else if (!this.externalStorageTotalBytes.equals(other.externalStorageTotalBytes)) {
+        return false;
+      }
+      if (this.externalStorageAvailableBytes == null) {
+        if (other.externalStorageAvailableBytes != null) {
+          return false;
+        }
+      } else if (!this.externalStorageAvailableBytes.equals(other.externalStorageAvailableBytes)) {
+        return false;
+      }
+      if (this.deviceName == null) {
+        if (other.deviceName != null) {
+          return false;
+        }
+      } else if (!this.deviceName.equals(other.deviceName)) {
+        return false;
+      }
+      return true;
+    }
+    
+    @Override
+    public int hashCode() {
+      int result = 17;
+      result = 31 * result
+          + (this.batteryLevel == null ? 0 : this.batteryLevel.hashCode());
+      result = 31 * result
+          + (this.externalStorageTotalBytes == null ? 0 : this.externalStorageTotalBytes.hashCode());
+      result = 31 * result
+          + (this.externalStorageAvailableBytes == null ? 0 : this.externalStorageAvailableBytes.hashCode());
+      result = 31 * result
+          + (this.deviceName == null ? 0 : this.deviceName.hashCode());
+      return result;
+    }
+    
+    @Override
+    public void writeTo(com.google.protobuf.nano.CodedOutputByteBufferNano output)
+        throws java.io.IOException {
+      if (this.batteryLevel != null) {
+        output.writeInt32(1, this.batteryLevel);
+      }
+      if (this.externalStorageTotalBytes != null) {
+        output.writeInt64(2, this.externalStorageTotalBytes);
+      }
+      if (this.externalStorageAvailableBytes != null) {
+        output.writeInt64(3, this.externalStorageAvailableBytes);
+      }
+      if (this.deviceName != null) {
+        output.writeString(4, this.deviceName);
+      }
+    }
+    
+    @Override
+    public int getSerializedSize() {
+      int size = super.getSerializedSize();
+      if (this.batteryLevel != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt32Size(1, this.batteryLevel);
+      }
+      if (this.externalStorageTotalBytes != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt64Size(2, this.externalStorageTotalBytes);
+      }
+      if (this.externalStorageAvailableBytes != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeInt64Size(3, this.externalStorageAvailableBytes);
+      }
+      if (this.deviceName != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(4, this.deviceName);
+      }
+      cachedSize = size;
+      return size;
+    }
+    
+    @Override
+    public GlassInfoResponse mergeFrom(
+            com.google.protobuf.nano.CodedInputByteBufferNano input)
+        throws java.io.IOException {
+      while (true) {
+        int tag = input.readTag();
+        switch (tag) {
+          case 0:
+            return this;
+          default: {
+            if (!com.google.protobuf.nano.WireFormatNano.parseUnknownField(input, tag)) {
+              return this;
+            }
+            break;
+          }
+          case 8: {
+            this.batteryLevel = input.readInt32();
+            break;
+          }
+          case 16: {
+            this.externalStorageTotalBytes = input.readInt64();
+            break;
+          }
+          case 24: {
+            this.externalStorageAvailableBytes = input.readInt64();
+            break;
+          }
+          case 34: {
+            this.deviceName = input.readString();
+            break;
+          }
+        }
+      }
+    }
+    
+    public static GlassInfoResponse parseFrom(byte[] data)
+        throws com.google.protobuf.nano.InvalidProtocolBufferNanoException {
+      return com.google.protobuf.nano.MessageNano.mergeFrom(new GlassInfoResponse(), data);
+    }
+    
+    public static GlassInfoResponse parseFrom(
+            com.google.protobuf.nano.CodedInputByteBufferNano input)
+        throws java.io.IOException {
+      return new GlassInfoResponse().mergeFrom(input);
     }
   }
 }

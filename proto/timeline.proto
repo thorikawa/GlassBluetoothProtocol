@@ -12,6 +12,10 @@ message TimelineItem {
   repeated Entity arrayOfEntity = 6;
   optional string inReplyTo = 7;
   optional string text = 8;
+  optional SourceType sourceType = 14;
+  optional string speakableText = 19;
+  optional string title = 23;
+  optional string html = 24;
 }
 
 message Entity {
@@ -22,4 +26,20 @@ message Entity {
   optional int32 type = 6;
   optional string phoneNumber = 7;
   optional string email = 8;
+  repeated string acceptType = 9;
+  optional bool isCommunicationTarget = 10;
+  repeated string imageUrl = 12;
+  repeated string secondaryPhoneNumber = 13;
+  repeated string secondaryEmail = 15;
+  repeated string acceptCommand = 16;
+  optional string speakableName = 17;
+  optional uint64 creationTime = 21;
+  optional string nickname = 23;
+  optional string fullname = 26;
+}
+
+enum SourceType {
+  GLASSWARE = 0;
+  GLASS_DEVICE = 1;
+  COMPANIONWARE = 2;
 }
