@@ -2086,10 +2086,18 @@ public interface Proto {
     // optional bool requestDeviceName = 3;
     public java.lang.Boolean requestDeviceName;
     
+    // optional bool requestSoftwareVersion = 4;
+    public java.lang.Boolean requestSoftwareVersion;
+    
+    // optional bool requestNeedSetup = 5;
+    public java.lang.Boolean requestNeedSetup;
+    
     public GlassInfoRequest clear() {
       requestBatteryLevel = null;
       requestStorageInfo = null;
       requestDeviceName = null;
+      requestSoftwareVersion = null;
+      requestNeedSetup = null;
       cachedSize = -1;
       return this;
     }
@@ -2124,6 +2132,20 @@ public interface Proto {
       } else if (!this.requestDeviceName.equals(other.requestDeviceName)) {
         return false;
       }
+      if (this.requestSoftwareVersion == null) {
+        if (other.requestSoftwareVersion != null) {
+          return false;
+        }
+      } else if (!this.requestSoftwareVersion.equals(other.requestSoftwareVersion)) {
+        return false;
+      }
+      if (this.requestNeedSetup == null) {
+        if (other.requestNeedSetup != null) {
+          return false;
+        }
+      } else if (!this.requestNeedSetup.equals(other.requestNeedSetup)) {
+        return false;
+      }
       return true;
     }
     
@@ -2136,6 +2158,10 @@ public interface Proto {
           + (this.requestStorageInfo == null ? 0 : this.requestStorageInfo.hashCode());
       result = 31 * result
           + (this.requestDeviceName == null ? 0 : this.requestDeviceName.hashCode());
+      result = 31 * result
+          + (this.requestSoftwareVersion == null ? 0 : this.requestSoftwareVersion.hashCode());
+      result = 31 * result
+          + (this.requestNeedSetup == null ? 0 : this.requestNeedSetup.hashCode());
       return result;
     }
     
@@ -2150,6 +2176,12 @@ public interface Proto {
       }
       if (this.requestDeviceName != null) {
         output.writeBool(3, this.requestDeviceName);
+      }
+      if (this.requestSoftwareVersion != null) {
+        output.writeBool(4, this.requestSoftwareVersion);
+      }
+      if (this.requestNeedSetup != null) {
+        output.writeBool(5, this.requestNeedSetup);
       }
     }
     
@@ -2167,6 +2199,14 @@ public interface Proto {
       if (this.requestDeviceName != null) {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
             .computeBoolSize(3, this.requestDeviceName);
+      }
+      if (this.requestSoftwareVersion != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeBoolSize(4, this.requestSoftwareVersion);
+      }
+      if (this.requestNeedSetup != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeBoolSize(5, this.requestNeedSetup);
       }
       cachedSize = size;
       return size;
@@ -2197,6 +2237,14 @@ public interface Proto {
           }
           case 24: {
             this.requestDeviceName = input.readBool();
+            break;
+          }
+          case 32: {
+            this.requestSoftwareVersion = input.readBool();
+            break;
+          }
+          case 40: {
+            this.requestNeedSetup = input.readBool();
             break;
           }
         }
@@ -2236,11 +2284,19 @@ public interface Proto {
     // optional string deviceName = 4;
     public java.lang.String deviceName;
     
+    // optional string softwareVersion = 5;
+    public java.lang.String softwareVersion;
+    
+    // optional bool needSetup = 6;
+    public java.lang.Boolean needSetup;
+    
     public GlassInfoResponse clear() {
       batteryLevel = null;
       externalStorageTotalBytes = null;
       externalStorageAvailableBytes = null;
       deviceName = null;
+      softwareVersion = null;
+      needSetup = null;
       cachedSize = -1;
       return this;
     }
@@ -2282,6 +2338,20 @@ public interface Proto {
       } else if (!this.deviceName.equals(other.deviceName)) {
         return false;
       }
+      if (this.softwareVersion == null) {
+        if (other.softwareVersion != null) {
+          return false;
+        }
+      } else if (!this.softwareVersion.equals(other.softwareVersion)) {
+        return false;
+      }
+      if (this.needSetup == null) {
+        if (other.needSetup != null) {
+          return false;
+        }
+      } else if (!this.needSetup.equals(other.needSetup)) {
+        return false;
+      }
       return true;
     }
     
@@ -2296,6 +2366,10 @@ public interface Proto {
           + (this.externalStorageAvailableBytes == null ? 0 : this.externalStorageAvailableBytes.hashCode());
       result = 31 * result
           + (this.deviceName == null ? 0 : this.deviceName.hashCode());
+      result = 31 * result
+          + (this.softwareVersion == null ? 0 : this.softwareVersion.hashCode());
+      result = 31 * result
+          + (this.needSetup == null ? 0 : this.needSetup.hashCode());
       return result;
     }
     
@@ -2313,6 +2387,12 @@ public interface Proto {
       }
       if (this.deviceName != null) {
         output.writeString(4, this.deviceName);
+      }
+      if (this.softwareVersion != null) {
+        output.writeString(5, this.softwareVersion);
+      }
+      if (this.needSetup != null) {
+        output.writeBool(6, this.needSetup);
       }
     }
     
@@ -2334,6 +2414,14 @@ public interface Proto {
       if (this.deviceName != null) {
         size += com.google.protobuf.nano.CodedOutputByteBufferNano
             .computeStringSize(4, this.deviceName);
+      }
+      if (this.softwareVersion != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeStringSize(5, this.softwareVersion);
+      }
+      if (this.needSetup != null) {
+        size += com.google.protobuf.nano.CodedOutputByteBufferNano
+            .computeBoolSize(6, this.needSetup);
       }
       cachedSize = size;
       return size;
@@ -2368,6 +2456,14 @@ public interface Proto {
           }
           case 34: {
             this.deviceName = input.readString();
+            break;
+          }
+          case 42: {
+            this.softwareVersion = input.readString();
+            break;
+          }
+          case 48: {
+            this.needSetup = input.readBool();
             break;
           }
         }

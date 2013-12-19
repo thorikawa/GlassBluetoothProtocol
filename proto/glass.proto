@@ -99,6 +99,8 @@ message GlassInfoRequest {
   optional bool requestBatteryLevel = 1;
   optional bool requestStorageInfo = 2;
   optional bool requestDeviceName = 3;
+  optional bool requestSoftwareVersion = 4;
+  optional bool requestNeedSetup = 5;
 }
 
 message GlassInfoResponse {
@@ -106,4 +108,6 @@ message GlassInfoResponse {
   optional int64 externalStorageTotalBytes = 2;
   optional int64 externalStorageAvailableBytes = 3;
   optional string deviceName = 4;
+  optional string softwareVersion = 5;
+  optional bool needSetup = 6;
 }
