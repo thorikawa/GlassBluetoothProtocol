@@ -17,7 +17,7 @@
 
 	<groupId>com.polysfactory.lib.glass.bluetooth</groupId>
 	<artifactId>glass-bluetooth</artifactId>
-	<version>0.1.2-SNAPSHOT</version>
+	<version>0.1.2</version>
 
 	<name>Glass Bluetooth Protocol</name>
 	<url>https://github.com/thorikawa/GlassBluetoothProtocol</url>
